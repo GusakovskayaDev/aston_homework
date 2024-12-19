@@ -1,1 +1,1 @@
-Создали репозиторий + установили шаблон 
+fix commit-msg by Husky & Node.js
