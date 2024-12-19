@@ -1,12 +1,14 @@
-import cloneDeep from 'lodash/cloneDeep';
+// import cloneDeep from 'lodash/cloneDeep';
 
 // Задание 2 – Скопировать объект counter всеми возможными способами;
 // Способ 1 - Object.assign() (поверхностное копирование)
 // Способ 2 - Object.create (поверхностное копирование)
 // Способ 3 - Оператор Spread (поверхностное копирование)
-// Способ 4 - JSON (глубокое копирование)
+// Способ 4 - JSON.stringify() и JSON.parse() (глубокое копирование)
 // Способ 5 - Lodash (глубокое копирование)
 // Способ 6 - structuredClone()(глубокое копирование)
+// Способ 7 - Собственная функция (глубокое копирование)
+// Способ 8 - Паттерн "Прототип" (поверхностное копирование)
 
 // __________________________________________________________________________________________
 
@@ -56,3 +58,34 @@ const counter = {
 // console.log(counterCopy);
 
 // __________________________________________________________________________________________
+
+// Способ 7 - Собственная функция (глубокое копирование)
+// function deepCopy(obj) {
+// 	if (obj === null || typeof obj !== 'object') {
+// 			return obj;
+// 	}
+
+// 	const copy = Array.isArray(obj) ? [] : {};
+
+// 	for (let key in obj) {
+// 			if (obj.hasOwnProperty(key)) {
+// 					copy[key] = deepCopy(obj[key]);
+// 			}
+// 	}
+
+// 	return copy;
+// }
+
+// const copiedCounter = deepCopy(counter);
+// copiedCounter.increment();
+// console.log(copiedCounter.count);
+// console.log(copiedCounter == counter);
+
+// __________________________________________________________________________________________
+
+// Способ 8 - Паттерн "Прототип" (поверхностное копирование)
+// function createCounter() {}
+// createCounter.prototype = Object.create(counter);
+// const counterCopy = new createCounter();
+// counterCopy.increment();
+// console.log(counterCopy.count);
