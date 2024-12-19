@@ -2,7 +2,18 @@
 // Написать функцию getLength, принимающую на вход валидное JS значение любого типа. Функция должна вывести в консоль длину (length) этого значения, если это возможно, иначе вывести в консоль 0.
 
 function getLength(value){
-	value?.length ? console.log(value.length) : console.log(0);
+	// Стало
+	if(value?.length){
+		console.log(value.length);
+	}
+	else if(value?.size){
+		console.log(value.size);
+	}
+	else{
+		console.log(0);
+	}
+	// Было
+	// value?.length ? console.log(value.length) : console.log(0);
 }
 
 getLength('Hello');
@@ -11,6 +22,20 @@ getLength({ a: 1 });
 getLength(42);
 getLength(null);
 getLength(undefined);
+
+const myDate = new Date();
+getLength(myDate);
+
+const myMap = new Map();
+myMap.set('name', 'Alice');
+myMap.set('age', 30);
+getLength(myMap);
+
+const mySet = new Set();
+mySet.add(1);
+mySet.add(2);
+mySet.add(3);
+getLength(mySet);
 
 // Напишите функцию compare, принимающую на вход два объекта Node, и возвращающую true, если они имеют одинаковую структуру и значения и false в ином случае.
 
